@@ -54,10 +54,13 @@ This command will show either syntax errors or list of resources will be created
 terraform apply
 ```
 
-This command will build and run all resources in the *.tf files. Now you have fully provisioned Docker Swarm Cluster in AWS with a running REST API application using Python and Flask. To check the running Docker Swarm service and application:
+This command will build and run all resources in the *.tf files. Now you have fully provisioned Docker Swarm Cluster in AWS with a running REST API application using Python and Flask. 
+
+Use the following commands to check the Docker Swarm Cluster and the service with the running application:
 ```
 docker stack ps restapp
 docker node ls
+```
 ```
 curl http://MASTER.IP:5000/employees
 curl http://MASTER.IP:5000/tracks
