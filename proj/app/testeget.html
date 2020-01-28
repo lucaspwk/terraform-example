@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="data">
+
+<h1>Teste de View com Tabela Employees</h1>
+<button type="button" onclick="loadDoc()">Visualizar</button>
+</div>
+
+
+<script>
+function loadDoc(id) {
+  var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        document.getElementById("data").innerHTML = 
+		myArr.data[0].Address + "<br/>" + 
+		myArr.data[0].BirthDate + "<br/>" + 
+		myArr.data[0].City + "<br/>" + 
+		myArr.data[0].Country + "<br/>" + 
+		myArr.data[0].Email + "<br/>" + 
+		myArr.data[0].EmployeeId + "<br/>" + 
+		myArr.data[0].Fax + "<br/>" + 
+		myArr.data[0].FirstName + "<br/>" + 
+		myArr.data[0].HireDate + "<br/>" + 
+		myArr.data[0].LastName + "<br/>" + 
+		myArr.data[0].Phone + "<br/>" + 
+		myArr.data[0].PostalCode + "<br/>" + 
+		myArr.data[0].ReportsTo + "<br/>" + 
+		myArr.data[0].State + "<br/>" + 
+		myArr.data[0].Title;
+    }
+  };
+  var url = "http://localhost:5002/employees/3"
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>

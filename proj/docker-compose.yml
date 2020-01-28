@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    web:
+        #image: lucaspwk/restapp:1.0
+        image: restapp
+        build: .
+        #container_name: restaapp
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/app
+        networks:
+            - frontend
+        deploy:
+            replicas: 3
+            update_config:
+                delay: 10s
+            restart_policy:
+                condition: on-failure
+networks:
+    frontend:
