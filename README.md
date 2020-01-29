@@ -26,6 +26,8 @@ Download the pem file. Copy the pem file to proj/ssh.
 Set read permission:
 ```
 chmod 400 my-key-pair.pem
+mkdir proj/ssh
+mv my-key-pair.pem proj/ssh/
 ```
 
 ### Running Terraform with Docker
@@ -43,7 +45,7 @@ sudo curl -fsSL https://get.docker.com | sh
 
 ### Instructions
 
-- Fill *variables.tf* with your AWS credentials (access_key, secret_key) and the AWS key name created. The default AWS region is ca-central-1. Please don't change or the EC2 ami-id will not work.
+- Fill *variables.tf* with your AWS credentials and the key name created (access_key, secret_key, key). The default AWS region is ca-central-1. Please don't change or the EC2 ami-id will not work.
 
 
 ### How to use
