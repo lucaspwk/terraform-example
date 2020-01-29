@@ -7,11 +7,13 @@ This example contains a Terraform configuration that creates an AWS Cluster infr
 
 [RestAPI using Python and Flask](https://github.com/gmcalixto/restapi)
 
-Basically, Terraform provisions a small Docker Swarm Cluster in AWS with three EC2 instances, defined as one manager and two workers. All Swarm workers will connect to the manager by a token, generated during the swarm initialisation. After that, a docker image is created with a docker-compose file and Dockerfile and then a scalable and high-available RestAPI application is deployed with by default (and configurable) 3 containers.
+Basically, Terraform provisions a Docker Swarm Cluster in AWS with three EC2 instances, defined as one manager and two workers. All Swarm workers will connect to the manager by a token, generated during the swarm initialisation. After that, a docker image is created with a docker-compose file and Dockerfile and then a scalable and high-available RestAPI application is deployed with by default (and configurable) 3 containers.
 
 
 
 ## Requirements
+
+
 
 ### AWS account
 
@@ -34,7 +36,10 @@ To run Terraform on a Docker container, please execute the following from the ro
 docker run -it -v $PWD:/data --entrypoint "" amontaigu/terraform sh
 ```
 It will mount the current volume on /data with all files needed.
-
+If Docker is not installed:
+```
+sudo curl -fsSL https://get.docker.com | sh
+```
 
 ### Instructions
 
