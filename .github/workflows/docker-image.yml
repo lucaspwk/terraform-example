@@ -15,7 +15,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+      - name: Run commands
+        run: |
+          ls -la
+          pwd
+          
       - name: Build the Docker image
-        run: docker build . --file proj/Dockerfile --tag python-webapp:$(date +%s)
+        run: docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile .
+        
       - name: Check docker image
         run: docker images
