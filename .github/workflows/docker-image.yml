@@ -26,15 +26,26 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
+          aws-region: us-east-1
           
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
       - name: Build the Docker image
-        #run: docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile .
-        run: docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile proj/.
+        id: build-image
+        env: 
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: esc-repo
+          IMAGE_TAG: python-webapp:$(date +%s)
+        run: |
+          docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG --file proj/Dockerfile proj/.
+          # docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile proj/.
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG
+          echo "::set-output name-image::$ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG"
         
       - name: Check docker image
-        run: docker images
+        run: docker images | grep python-webapp
+        
+      - name: Docker Push
+        
