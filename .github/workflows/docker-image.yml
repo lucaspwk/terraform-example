@@ -39,10 +39,10 @@ jobs:
           ECR_REPOSITORY: esc-repo
           IMAGE_TAG: python-webapp:${{ github.sha }}
         run: |
-          docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG --file proj/Dockerfile proj/.
+          docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --file proj/Dockerfile proj/.
           # docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile proj/.
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG
-          echo "::set-output name-image::$ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_TAG"
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name-image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         
       - name: Check docker image
         run: docker images | grep python-webapp
