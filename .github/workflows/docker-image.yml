@@ -40,6 +40,8 @@ jobs:
           #IMAGE_TAG: python-webapp:${{ github.sha }}
           IMAGE_TAG: python-webapp
         run: |
+          echo "$ECR_REGISTRY"
+          echo "$ECR_REPOSITORY:$IMAGE_TAG"
           docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --file proj/Dockerfile proj/.
           # docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile proj/.
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
