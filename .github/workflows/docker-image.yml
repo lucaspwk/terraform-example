@@ -22,7 +22,7 @@ jobs:
           
       - name: Build the Docker image
         #run: docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile .
-        run: docker build --tag python-webapp:$(date +%s) --file Dockerfile proj/.
+        run: docker build --tag python-webapp:$(date +%s) --file proj/Dockerfile proj/.
         
       - name: Check docker image
         run: docker images
