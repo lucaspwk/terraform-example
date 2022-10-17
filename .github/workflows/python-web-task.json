@@ -18,7 +18,7 @@
                 }
             ],
             "image": "300103126453.dkr.ecr.us-east-1.amazonaws.com/esc_repo:python-webapp",
-            "name": "python-web"
+            "name": "python-webapp"
         }
     ],
     "memory": "512",
