@@ -47,5 +47,3 @@ jobs:
       - name: Check docker image
         run: docker images | grep python-webapp
         
-      - name: Docker Push
-        
