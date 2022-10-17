@@ -36,7 +36,7 @@ jobs:
         id: build-image
         env: 
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: esc-repo
+          ECR_REPOSITORY: esc_repo
           #IMAGE_TAG: python-webapp:${{ github.sha }}
           IMAGE_TAG: python-webapp
         run: |
