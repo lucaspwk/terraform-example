@@ -1,0 +1,32 @@
+{
+    "executionRoleArn": "arn:aws:iam::300103126453:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/python-web-task",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "portMappings": [
+                {
+                    "hostPort": 5000,
+                    "protocol": "tcp",
+                    "containerPort": 5000
+                }
+            ],
+            "image": "300103126453.dkr.ecr.us-east-1.amazonaws.com/esc_repo:python-webapp",
+            "name": "python-webapp"
+        }
+    ],
+    "memory": "512",
+    "family": "python-web-task",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256"
+   
+}
